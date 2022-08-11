@@ -16,6 +16,8 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", 'mockyIoUrl', '"https://run.mocky.io/v3/"'
     }
 
     buildTypes {
@@ -41,6 +43,9 @@ dependencies {
     def lifecycle_version = "2.5.1"
     def nav_version = "2.5.1"
     def gsonVersion = "2.9.1"
+    def retrofitVersion = "2.9.0"
+    def timberVersion = "5.0.1"
+    def loggingHttpVersion = "4.10.0"
 
     implementation "androidx.core:core-ktx:$core_ktx_version"
     implementation "androidx.appcompat:appcompat:$appcompat_version"
@@ -59,6 +64,16 @@ dependencies {
 
     //GSON
     implementation "com.google.code.gson:gson:$gsonVersion"
+
+    //Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+
+    //OkHttp
+    implementation "com.squareup.okhttp3:logging-interceptor:$loggingHttpVersion"
+
+    //Timber
+    implementation "com.jakewharton.timber:timber:$timberVersion"
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

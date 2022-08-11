@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import com.rodrigomadeiro.bootstrap.R
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 @AndroidEntryPoint
 class ListColorsFragment: Fragment() {
@@ -38,7 +40,9 @@ class ListColorsFragment: Fragment() {
     }
 
     private fun setupViewModel(){
-
+        viewModel.colors.observe(viewLifecycleOwner, Observer {
+            Timber.i("$it")
+        })
     }
 
     private fun setupEvents(){

@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ListColorsViewModel: ViewModel() {
+class ListColorsViewModel @Inject constructor(): ViewModel() {
 
     @Inject
     lateinit var getColorListUseCase: GetColorListUseCase

@@ -28,6 +28,7 @@
         android:layout_height="wrap_content"
 
         tools:text="White"
+        android:textColor="@color/black"
 
         app:layout_constraintLeft_toRightOf="@id/imgColor"
         app:layout_constraintTop_toTopOf="parent"

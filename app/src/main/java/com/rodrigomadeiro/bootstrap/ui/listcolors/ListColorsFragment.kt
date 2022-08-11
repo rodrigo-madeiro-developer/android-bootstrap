@@ -7,15 +7,23 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.rodrigomadeiro.bootstrap.R
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class ListColorsFragment: Fragment() {
 
     //region Properties
+    @Inject
+    lateinit var adapter: ListColorsAdapter
+
     private val viewModel: ListColorsViewModel by viewModels()
+
+    lateinit var recyclerView: RecyclerView
     //endregion
 
     //region Lifecycle
@@ -36,12 +44,15 @@ class ListColorsFragment: Fragment() {
 
     //region Setup
     private fun setupView(){
-
+        recyclerView = requireView().findViewById(R.id.recyclerView)
+        recyclerView.adapter = adapter
+        val layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        recyclerView.layoutManager = layoutManager
     }
 
     private fun setupViewModel(){
         viewModel.colors.observe(viewLifecycleOwner, Observer {
-            Timber.i("$it")
+            adapter.setData(it)
         })
     }
 

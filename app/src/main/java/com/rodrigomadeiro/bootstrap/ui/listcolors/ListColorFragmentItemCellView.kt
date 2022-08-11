@@ -26,13 +26,13 @@ class ListColorFragmentItemCellView@JvmOverloads constructor(context: Context, a
 
     //region Misc
     private fun setupView(){
-        imgColor = findViewById(R.id.lblName)
+        imgColor = findViewById(R.id.imgColor)
         lblName = findViewById(R.id.lblName)
     }
 
     open fun bind(color: MtgColor){
 
-        lblName.text = color.text
+        lblName.text = color.name
         Glide.with(imgColor).load(color.icon).into(imgColor)
     }
     //endregion
